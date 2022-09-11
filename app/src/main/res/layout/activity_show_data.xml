@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <!-- Creación de Variables y su uso en el Layout -->
+        <variable
+            name="personaXml"
+            type="mx.edu.utez.ejercicios.vistas.Persona" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        tools:context=".vistas.ShowDataActivity">
+        <!--
+        Es necesario poner una orientación a LinearLayout
+            - horizontal
+            - vertical
+         -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hola, mi nombre es..."
+            android:gravity="center"
+            android:layout_marginVertical="5dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/textViewNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{personaXml.nombre}"
+            tools:text="Gandy Esaú"
+            android:gravity="center"
+            android:layout_marginVertical="5dp"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="y mis apellidos son..."
+            android:gravity="center"
+            android:layout_marginVertical="5dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/textViewApellidos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{personaXml.apellidos}"
+            tools:text="Ávila Estrada"
+            android:gravity="center"
+            android:layout_marginVertical="5dp"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="y mi edad es..."
+            android:gravity="center"
+            android:layout_marginVertical="5dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/textViewEdad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="21 años"
+            android:text="@{personaXml.edad}"
+            android:gravity="center"
+            android:layout_marginVertical="5dp"
+            android:textSize="20sp"
+            />
+
+        <Button
+            android:id="@+id/buttonRegresar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Regresar"
+            android:layout_marginVertical="10dp"
+            />
+    </LinearLayout>
+</layout>
