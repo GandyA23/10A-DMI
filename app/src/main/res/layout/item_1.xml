@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayoutItem1"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:orientation="horizontal"
-    >
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal">
 
     <View
         android:layout_width="25dp"
@@ -19,9 +20,10 @@
         android:gravity="center">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleImageViewPerfil"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@color/purple_500"
+            tools:background="@color/purple_500"
             />
     </LinearLayout>
 
@@ -40,6 +42,7 @@
         android:layout_weight="2"
     >
         <TextView
+            android:id="@+id/textViewNombre"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -58,12 +61,14 @@
         android:gravity="center"
     >
         <ImageView
+            android:id="@+id/imageViewCheck"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@mipmap/ic_check"
             />
 
         <ImageView
+            android:id="@+id/imageViewRemove"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@mipmap/ic_remove"

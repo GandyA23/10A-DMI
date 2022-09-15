@@ -6,10 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".listas.ListaActivity">
 
+    <!--
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        />
+    -->
+
+    <!--
+        tools:listitem="@layout/item_1": Nos ayuda a visualizar como se verá en el RecyclerView
+    -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        tools:listitem="@layout/item_1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
