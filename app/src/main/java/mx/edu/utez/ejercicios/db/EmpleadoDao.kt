@@ -8,18 +8,18 @@ import androidx.room.*
 @Dao
 interface EmpleadoDao {
     @Insert
-    fun insert(empleado: EmpleadoEntity)
+    suspend fun insert(empleado: EmpleadoEntity)
 
     @Query("SELECT * FROM empleado")
-    fun getAll() : List<EmpleadoEntity>
+    suspend fun getAll() : List<EmpleadoEntity>
 
     @Delete
-    fun delete(empleado: EmpleadoEntity)
+    suspend fun delete(empleado: EmpleadoEntity)
 
     @Update
-    fun update(empleado: EmpleadoEntity)
+    suspend fun update(empleado: EmpleadoEntity)
 
     // Uso de parámetros en @Query
     @Query("SELECT * FROM empleado WHERE id = :id")
-    fun getById(id: Int) : EmpleadoEntity
+    suspend fun getById(id: Int) : EmpleadoEntity
 }

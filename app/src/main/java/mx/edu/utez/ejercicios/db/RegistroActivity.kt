@@ -33,7 +33,14 @@ class RegistroActivity : AppCompatActivity() {
         binding.buttonConsultar.setOnClickListener {
             // Realiza la co-rutina para consulta
             lifecycleScope.launch {
-                Toast.makeText(applicationContext, "Size ${room.getEmpleadoDao().getAll().size}", Toast.LENGTH_SHORT).show()
+                val usuarios : List<EmpleadoEntity> = room.getEmpleadoDao().getAll()
+                var strUsuarios = ""
+
+                // Obtiene toda la info de los usuarios
+                for(usuario in usuarios)
+                    strUsuarios += "${usuario.id}.- ${usuario.nombre} - ${usuario.telefono}\n"
+
+                Toast.makeText(applicationContext, "Usuarios: \n$strUsuarios \nSize ${room.getEmpleadoDao().getAll().size}", Toast.LENGTH_SHORT).show()
             }
         }
     }
