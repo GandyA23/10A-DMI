@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
     // id 'kotlin-android-extensions'
 }
 
@@ -65,4 +66,13 @@ dependencies {
     // Ayuda a cargar fotos en un ImageView
     implementation 'com.github.bumptech.glide:glide:4.13.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
+
+    // Base de datos room
+    implementation "androidx.room:room-ktx:2.4.0"
+
+    // Necesario importar id 'kotlin-kapt' en los ids
+    kapt "androidx.room:room-compiler:2.4.0"
+
+    // Necesario para realizar co-rutinas
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
 }

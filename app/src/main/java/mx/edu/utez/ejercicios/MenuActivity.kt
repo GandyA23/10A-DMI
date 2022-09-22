@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import mx.edu.utez.ejercicios.databinding.ActivityMenuBinding
+import mx.edu.utez.ejercicios.db.RegistroActivity
 import mx.edu.utez.ejercicios.listas.ListaActivity
 import mx.edu.utez.ejercicios.splash.SplashActivity
 import mx.edu.utez.ejercicios.vistas.MainActivity
@@ -23,6 +24,7 @@ class MenuActivity : AppCompatActivity() {
             Pair(binding.buttonVistas, MainActivity::class),
             Pair(binding.buttonSplash, SplashActivity::class),
             Pair(binding.buttonListas, ListaActivity::class),
+            Pair(binding.buttonDb, RegistroActivity::class),
         )
 
         buttons.forEach { (button, activity) ->

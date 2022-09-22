@@ -43,4 +43,16 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonVistas"
         app:layout_constraintVertical_bias="0.219" />
 
+    <Button
+        android:id="@+id/buttonDb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="BASE DE DATOS"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonListas"
+        app:layout_constraintVertical_bias="0.357" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
