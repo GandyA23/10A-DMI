@@ -1,5 +1,6 @@
 package mx.edu.utez.ejercicios.listas
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -7,13 +8,13 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import mx.edu.utez.ejercicios.databinding.ActivityListaBinding
 
-class ListaActivity : AppCompatActivity() {
+class ListaActivity : AppCompatActivity(), AdapterAlumno.Eventos {
 
     lateinit var binding: ActivityListaBinding
+    lateinit var adapter : AdapterAlumno
 
     /** Mostrar una lista en la vista */
     var data : List<String> = listOf("Gandy", "Violeta", "Brian", "Gustavo", "Dafne", "Rashid")
-
     var dataRecycler : MutableList<Alumno> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +34,7 @@ class ListaActivity : AppCompatActivity() {
         // Método para RecyclerView
         // Setear el adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        var adapter = AdapterAlumno(this)
+        adapter = AdapterAlumno(this, this) // Realiza el uso de la interfaz y un contexto
         binding.recyclerView.adapter = adapter
 
         // Setear los datos y notificar que ya tiene datos
@@ -54,5 +55,24 @@ class ListaActivity : AppCompatActivity() {
             Toast.makeText(this, data[i], Toast.LENGTH_SHORT).show()
         }
         */
+    }
+
+    /** interface Eventos **/
+    override fun onItemClick(element: Alumno, position: Int) {
+        Toast.makeText(this, "Click en ${element.nombre}", Toast.LENGTH_SHORT).show()
+
+        // Es mejor realizar los cambios de interfaz desde un Activity que desde un Adapter
+        // Realizar el cambio desde un Adapter puede generar errores
+        startActivity(Intent(this, AlumnoInfoActivity::class.java).putExtra("alumno", element))
+    }
+
+    override fun onStatusChange(element: Alumno, position: Int, estatus: String) {
+        // Cambia el estado del alumno
+        dataRecycler[position].estatus = estatus
+
+        // Notifica al adapter que el dato en la posición ${position} ha cambiado
+        adapter.notifyItemChanged(position)
+
+        Toast.makeText(this, "Click en ${element.nombre} ${element.estatus}", Toast.LENGTH_SHORT).show()
     }
 }
