@@ -9,6 +9,7 @@ import androidx.room.RoomDatabase
 // Anotación necesaria para indicar que esta clase es la DB
 @Database(
     entities = [
+        // Aquí van todas las entidades
         EmpleadoEntity::class
     ],
 
@@ -16,5 +17,6 @@ import androidx.room.RoomDatabase
     version = 1
 )
 abstract class Db: RoomDatabase() {
+    // Se debe de importar un dao por cada tabla para utilizar sus operaciones
     abstract fun getEmpleadoDao(): EmpleadoDao
 }

@@ -38,9 +38,9 @@ class RegistroActivity : AppCompatActivity() {
 
                 // Obtiene toda la info de los usuarios
                 for(usuario in usuarios)
-                    strUsuarios += "${usuario.id}.- ${usuario.nombre} - ${usuario.telefono}\n"
+                    strUsuarios += "\n${usuario.id}.- ${usuario.nombre} - ${usuario.telefono}"
 
-                Toast.makeText(applicationContext, "Usuarios: \n$strUsuarios \nSize ${room.getEmpleadoDao().getAll().size}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Usuarios: $strUsuarios \nSize ${room.getEmpleadoDao().getAll().size}", Toast.LENGTH_SHORT).show()
             }
         }
     }

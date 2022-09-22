@@ -8,28 +8,17 @@
     tools:context=".MenuActivity">
 
     <Button
-        android:id="@+id/buttonVistas"
+        android:id="@+id/buttonShared"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="VISTAS"
+        android:layout_marginTop="23dp"
+        android:text="SHARED"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSplash"
-        app:layout_constraintVertical_bias="0.125" />
-
-    <Button
-        android:id="@+id/buttonSplash"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SPLASH"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.418" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonDb"
+        app:layout_constraintVertical_bias="0.186" />
 
     <Button
         android:id="@+id/buttonListas"
@@ -41,7 +30,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonVistas"
-        app:layout_constraintVertical_bias="0.219" />
+        app:layout_constraintVertical_bias="0.152" />
 
     <Button
         android:id="@+id/buttonDb"
@@ -53,6 +42,30 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonListas"
-        app:layout_constraintVertical_bias="0.357" />
+        app:layout_constraintVertical_bias="0.149" />
+
+    <Button
+        android:id="@+id/buttonVistas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="VISTAS"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSplash"
+        app:layout_constraintVertical_bias="0.092" />
+
+    <Button
+        android:id="@+id/buttonSplash"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SPLASH"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.239" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
