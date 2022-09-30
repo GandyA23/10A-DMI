@@ -1,97 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="20dp"
+    android:orientation="vertical"
+    android:gravity="center"
     tools:context=".MenuActivity">
 
     <Button
         android:id="@+id/buttonShared"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
         android:text="SHARED"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonDb"
-        app:layout_constraintVertical_bias="0.019" />
+        android:layout_marginVertical="5sp"
+        />
 
     <Button
         android:id="@+id/buttonListas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="LISTAS"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonVistas"
-        app:layout_constraintVertical_bias="0.054" />
+        android:layout_marginVertical="5sp"
+        />
 
     <Button
         android:id="@+id/buttonDb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="BASE DE DATOS"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonListas"
-        app:layout_constraintVertical_bias="0.079" />
+        android:layout_marginVertical="5sp"
+        />
 
     <Button
         android:id="@+id/buttonVistas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="VISTAS"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSplash"
-        app:layout_constraintVertical_bias="0.052" />
+        android:layout_marginVertical="5sp"
+        />
 
     <Button
         android:id="@+id/buttonSplash"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SPLASH"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.239" />
+        android:layout_marginVertical="5sp"
+        />
 
     <Button
         android:id="@+id/buttonMvp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="39dp"
         android:text="Model View Presenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonShared"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_marginVertical="5sp"
+        />
 
     <Button
         android:id="@+id/buttonCalculatorMvp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
         android:text="Calculadora MVP"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonMvp"
-        app:layout_constraintVertical_bias="0.089" />
+        android:layout_marginVertical="5sp"
+        />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
