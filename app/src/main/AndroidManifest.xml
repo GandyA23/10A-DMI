@@ -17,6 +17,15 @@
         android:theme="@style/Theme.Ejercicios"
         tools:targetApi="31">
         <activity
+            android:name=".examenunidad1.RegistrarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".examenunidad1.ConsultarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".examenunidad1.MainExamenU1Activity"
+            android:exported="false" />
+        <activity
             android:name=".calculatormvp.CalculatorActivity"
             android:exported="false" />
         <activity
