@@ -32,6 +32,21 @@
             android:name=".mvvm.view.MainMvvmActivity"
             android:exported="false" />
         <activity
+            android:name=".examenunidad1.RegistrarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".examenunidad1.ConsultarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".examenunidad1.MainExamenU1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".calculatormvp.CalculatorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mvp.MainMvpActivity"
+            android:exported="false" />
+        <activity
             android:name=".shared.LoginActivity"
             android:exported="false" />
         <activity
@@ -78,5 +93,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>
