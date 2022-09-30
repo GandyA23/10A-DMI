@@ -3,8 +3,6 @@ package mx.edu.utez.ejercicios.shared
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.launch
 import mx.edu.utez.ejercicios.EjerciciosApplication
 import mx.edu.utez.ejercicios.databinding.ActivityLoginBinding
 
