@@ -17,6 +17,21 @@
         android:theme="@style/Theme.Ejercicios"
         tools:targetApi="31">
         <activity
+            android:name=".calculadoramvvm.view.MenuFigurasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".calculadoramvvm.view.TrianguloActivity"
+            android:exported="false" />
+        <activity
+            android:name=".calculadoramvvm.view.CuadradoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".calculadoramvvm.view.CirculoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mvvm.view.MainMvvmActivity"
+            android:exported="false" />
+        <activity
             android:name=".shared.LoginActivity"
             android:exported="false" />
         <activity
