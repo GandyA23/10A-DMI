@@ -89,4 +89,12 @@
         android:layout_marginVertical="5sp"
         />
 
+    <Button
+        android:id="@+id/buttonRest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Consumo REST"
+        android:layout_marginVertical="5sp"
+        />
+
 </LinearLayout>

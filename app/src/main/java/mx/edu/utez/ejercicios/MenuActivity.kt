@@ -12,6 +12,7 @@ import mx.edu.utez.ejercicios.examenunidad1.MainExamenU1Activity
 import mx.edu.utez.ejercicios.listas.ListaActivity
 import mx.edu.utez.ejercicios.mvvm.view.MainMvvmActivity
 import mx.edu.utez.ejercicios.mvp.MainMvpActivity
+import mx.edu.utez.ejercicios.rest.ConsultaRestActivity
 import mx.edu.utez.ejercicios.shared.LoginActivity
 import mx.edu.utez.ejercicios.splash.SplashActivity
 import mx.edu.utez.ejercicios.vistas.MainActivity
@@ -37,6 +38,7 @@ class MenuActivity : AppCompatActivity() {
             Pair(binding.buttonExamenUnidadI, MainExamenU1Activity::class),
             Pair(binding.buttonMvvm, MainMvvmActivity::class),
             Pair(binding.buttonFigurasMvvm, MenuFigurasActivity::class),
+            Pair(binding.buttonRest, ConsultaRestActivity::class),
         )
 
         buttons.forEach { (button, activity) ->

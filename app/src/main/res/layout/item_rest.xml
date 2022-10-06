@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_margin="5dp"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutItem2"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/viewIndicador"
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:background="@color/teal_200"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:gravity="center"
+            >
+
+            <TextView
+                android:id="@+id/textViewId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="4000"
+                android:textStyle="normal"
+                android:textSize="30sp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="3dp"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center"
+            >
+
+            <TextView
+                android:id="@+id/textViewNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Gandy Esaú Ávila Estrada"
+                android:textStyle="normal"
+                android:textSize="15sp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="3dp"
+                />
+
+            <TextView
+                android:id="@+id/textViewCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="avila.gandy@gmail.com"
+                android:textStyle="normal"
+                android:textSize="15sp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="3dp"
+                />
+
+            <TextView
+                android:id="@+id/textViewGenero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="male"
+                android:textStyle="normal"
+                android:textSize="15sp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="3dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
