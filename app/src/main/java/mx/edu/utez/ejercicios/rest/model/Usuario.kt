@@ -1,4 +1,4 @@
-package mx.edu.utez.ejercicios.rest
+package mx.edu.utez.ejercicios.rest.model
 
 /** La data class debe de tener los mismo nombres que cada objeto en la respuesta de API**/
 data class Usuario(

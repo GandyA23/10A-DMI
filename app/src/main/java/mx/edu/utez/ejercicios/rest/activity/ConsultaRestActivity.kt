@@ -9,8 +9,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.launch
 import mx.edu.utez.ejercicios.databinding.ActivityConsultaRestBinding
-import mx.edu.utez.ejercicios.rest.AdapterUsuario
-import mx.edu.utez.ejercicios.rest.Usuario
+import mx.edu.utez.ejercicios.rest.adapter.AdapterUsuario
+import mx.edu.utez.ejercicios.rest.model.Usuario
 import mx.edu.utez.ejercicios.rest.viewmodel.ConsultaViewModel
 import mx.edu.utez.ejercicios.utils.LoadingScreen
 
@@ -26,8 +26,8 @@ class ConsultaRestActivity : AppCompatActivity(), AdapterUsuario.Eventos {
         setContentView(binding.root)
 
         viewModel = ViewModelProvider(this).get(ConsultaViewModel::class.java)
-        initObservers()
         viewModel.getAll()
+        initObservers()
     }
 
     fun initObservers() {

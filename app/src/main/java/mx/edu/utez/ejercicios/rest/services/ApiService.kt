@@ -1,6 +1,6 @@
 package mx.edu.utez.ejercicios.rest.services
 
-import mx.edu.utez.ejercicios.rest.Usuario
+import mx.edu.utez.ejercicios.rest.model.Usuario
 import mx.edu.utez.ejercicios.utils.EnvValues
 import retrofit2.Response
 import retrofit2.http.*
@@ -25,6 +25,12 @@ interface ApiService {
         @Body user: Usuario,
         @Header("Authorization") token : String
     ) : Response<Usuario>
+
+    @DELETE
+    suspend fun delete(
+        @Url url : String,
+        @Header("Authorization") token : String
+    ) : Response<Void>
 }
 
 object ApiUtils {

@@ -17,6 +17,9 @@
         android:theme="@style/Theme.Ejercicios"
         tools:targetApi="31">
         <activity
+            android:name=".rest.activity.EliminarRestActivity"
+            android:exported="false" />
+        <activity
             android:name=".rest.activity.DetailActivityRest"
             android:exported="false" />
         <activity

@@ -1,4 +1,4 @@
-package mx.edu.utez.ejercicios.rest
+package mx.edu.utez.ejercicios.rest.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,9 +9,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import mx.edu.utez.ejercicios.R
 import mx.edu.utez.ejercicios.databinding.ItemRestBinding
-import mx.edu.utez.ejercicios.listas.AdapterAlumno
+import mx.edu.utez.ejercicios.rest.model.Usuario
 
-class AdapterUsuario(private val eventos: Eventos, var context : Context) : ListAdapter<Usuario, AdapterUsuario.ViewHolder>(DiffUtilCallback) {
+class AdapterUsuario(private val eventos: Eventos, var context : Context) : ListAdapter<Usuario, AdapterUsuario.ViewHolder>(
+    DiffUtilCallback
+) {
 
     private val ctx = context
 

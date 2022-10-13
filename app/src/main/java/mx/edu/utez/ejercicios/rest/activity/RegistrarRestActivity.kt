@@ -6,23 +6,16 @@ import android.os.Bundle
 import android.view.View
 import android.widget.RadioButton
 import android.widget.Toast
-import androidx.lifecycle.lifecycleScope
-import com.google.gson.GsonBuilder
-import com.google.gson.reflect.TypeToken
-import kotlinx.coroutines.launch
-import mx.edu.utez.ejercicios.MenuActivity
+import androidx.lifecycle.ViewModelProvider
 import mx.edu.utez.ejercicios.databinding.ActivityRegistrarRestBinding
-import mx.edu.utez.ejercicios.rest.ErrorData
-import mx.edu.utez.ejercicios.rest.Usuario
-import mx.edu.utez.ejercicios.rest.services.ApiService
-import mx.edu.utez.ejercicios.utils.EnvValues
+import mx.edu.utez.ejercicios.rest.model.Usuario
+import mx.edu.utez.ejercicios.rest.viewmodel.RegistroViewModel
 import mx.edu.utez.ejercicios.utils.LoadingScreen
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class RegistrarRestActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityRegistrarRestBinding
+    lateinit var viewModel : RegistroViewModel
     var genre: String = "male"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,51 +23,24 @@ class RegistrarRestActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        viewModel = ViewModelProvider(this).get(RegistroViewModel::class.java)
+
         // Por default, pon al genero másculino y este será activo
         binding.radioGroupGenre.check(binding.radioButtonMale.id)
         binding.switchStatus.isChecked = true
 
         binding.buttonRegistrar.setOnClickListener {
-            LoadingScreen.show(this, "Espere...", false)
+            viewModel.store(
+                Usuario(
+                    null,
+                    binding.editTextName.text.toString(),
+                    binding.editTextEmail.text.toString(),
+                    genre,
+                    if(binding.switchStatus.isChecked) "active" else "inactive"
+                )
+            )
 
-            lifecycleScope.launch {
-                val call = getRetrofit().create(ApiService::class.java)
-                    .create(
-                        "${EnvValues.BASE_URL}/users/",
-                        Usuario(
-                            null,
-                            binding.editTextName.text.toString(),
-                            binding.editTextEmail.text.toString(),
-                            genre,
-                            if(binding.switchStatus.isChecked) "active" else "inactive"
-                        ),
-                        "Bearer ${EnvValues.BEARER_TOKEN}"
-                    )
-
-                runOnUiThread {
-                    if (call.isSuccessful) {
-                        Toast.makeText(applicationContext, "Se ha registrado correctamente el usuario", Toast.LENGTH_SHORT).show()
-                        LoadingScreen.hide()
-                        startActivity(Intent(applicationContext, MainRestActivity::class.java))
-                        finish()
-                    } else {
-                        var gson = GsonBuilder().create()
-                        var type = object : TypeToken<List<ErrorData>>() {}.type
-
-                        // Se obtienen los errores del json
-                        var errores : List<ErrorData> = gson.fromJson(
-                            call.errorBody()!!.charStream(),
-                            type
-                        )
-
-                        val ERROR_MESSAGE = "${errores[0].field}: ${errores[0].message}"
-
-                        println(ERROR_MESSAGE)
-                        Toast.makeText(applicationContext, ERROR_MESSAGE, Toast.LENGTH_SHORT).show()
-                        LoadingScreen.hide()
-                    }
-                }
-            }
+            initObservers()
         }
     }
 
@@ -96,11 +62,23 @@ class RegistrarRestActivity : AppCompatActivity() {
         }
     }
 
-    private fun getRetrofit() : Retrofit {
-        return Retrofit
-            .Builder()
-            .baseUrl("${EnvValues.BASE_URL}/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+    fun initObservers() {
+        viewModel.data.observe(this) {
+            Toast.makeText(this@RegistrarRestActivity, "Se ha registrado el usuario: ${it.id} - ${it.name}", Toast.LENGTH_SHORT).show()
+        }
+
+        viewModel.error.observe(this) {
+            Toast.makeText(this@RegistrarRestActivity, it, Toast.LENGTH_SHORT).show()
+        }
+
+        viewModel.isApiProgress.observe(this) {
+            if (it)
+                LoadingScreen.show(this@RegistrarRestActivity, "Espere...", false)
+            else {
+                LoadingScreen.hide()
+                startActivity(Intent(this@RegistrarRestActivity, MainRestActivity::class.java))
+                finish()
+            }
+        }
     }
 }
