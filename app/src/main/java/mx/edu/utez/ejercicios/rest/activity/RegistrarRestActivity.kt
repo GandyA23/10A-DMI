@@ -1,4 +1,4 @@
-package mx.edu.utez.ejercicios.rest
+package mx.edu.utez.ejercicios.rest.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,10 +7,13 @@ import android.view.View
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.launch
 import mx.edu.utez.ejercicios.MenuActivity
 import mx.edu.utez.ejercicios.databinding.ActivityRegistrarRestBinding
+import mx.edu.utez.ejercicios.rest.ErrorData
+import mx.edu.utez.ejercicios.rest.Usuario
 import mx.edu.utez.ejercicios.rest.services.ApiService
 import mx.edu.utez.ejercicios.utils.EnvValues
 import mx.edu.utez.ejercicios.utils.LoadingScreen
@@ -53,10 +56,21 @@ class RegistrarRestActivity : AppCompatActivity() {
                         Toast.makeText(applicationContext, "Se ha registrado correctamente el usuario", Toast.LENGTH_SHORT).show()
                         LoadingScreen.hide()
                         startActivity(Intent(applicationContext, MainRestActivity::class.java))
+                        finish()
                     } else {
-                        val RESPONSE_ERROR = "Ha ocurrido un error al registrar los datos"
-                        println(RESPONSE_ERROR)
-                        Toast.makeText(applicationContext, RESPONSE_ERROR, Toast.LENGTH_SHORT).show()
+                        var gson = GsonBuilder().create()
+                        var type = object : TypeToken<List<ErrorData>>() {}.type
+
+                        // Se obtienen los errores del json
+                        var errores : List<ErrorData> = gson.fromJson(
+                            call.errorBody()!!.charStream(),
+                            type
+                        )
+
+                        val ERROR_MESSAGE = "${errores[0].field}: ${errores[0].message}"
+
+                        println(ERROR_MESSAGE)
+                        Toast.makeText(applicationContext, ERROR_MESSAGE, Toast.LENGTH_SHORT).show()
                         LoadingScreen.hide()
                     }
                 }

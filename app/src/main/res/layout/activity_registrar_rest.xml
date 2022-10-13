@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".rest.RegistrarRestActivity"
+    tools:context=".rest.activity.RegistrarRestActivity"
     android:orientation="vertical"
     android:gravity="center"
     android:layout_margin="30dp"

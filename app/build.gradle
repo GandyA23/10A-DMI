@@ -74,10 +74,14 @@ dependencies {
 
     // Necesario para realizar co-rutinas
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
 
     // Consumo de API REST
-    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
 
     // Interpreta el resulta a JSON
     implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+
+    // Interceptor para ver lo que se envía y recibe la aplicación
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
 }

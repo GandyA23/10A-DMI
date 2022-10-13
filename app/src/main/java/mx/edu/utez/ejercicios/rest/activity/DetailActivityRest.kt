@@ -1,12 +1,16 @@
-package mx.edu.utez.ejercicios.rest
+package mx.edu.utez.ejercicios.rest.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
+import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.launch
 import mx.edu.utez.ejercicios.databinding.ActivityDetailRestBinding
+import mx.edu.utez.ejercicios.rest.ErrorData
+import mx.edu.utez.ejercicios.rest.Usuario
 import mx.edu.utez.ejercicios.rest.services.ApiService
 import mx.edu.utez.ejercicios.utils.EnvValues
 import mx.edu.utez.ejercicios.utils.LoadingScreen
@@ -43,9 +47,19 @@ class DetailActivityRest : AppCompatActivity() {
                     LoadingScreen.hide()
 
                 } else {
-                    val RESPONSE_ERROR = "Ha ocurrido un error al consultar los datos"
-                    println(RESPONSE_ERROR)
-                    Toast.makeText(applicationContext, RESPONSE_ERROR, Toast.LENGTH_SHORT).show()
+                    var gson = GsonBuilder().create()
+                    var type = object : TypeToken<List<ErrorData>>() {}.type
+
+                    // Se obtienen los errores del json
+                    var errores : List<ErrorData> = gson.fromJson(
+                        call.errorBody()!!.charStream(),
+                        type
+                    )
+
+                    val ERROR_MESSAGE = "${errores[0].field}: ${errores[0].message}"
+                    
+                    println(ERROR_MESSAGE)
+                    Toast.makeText(applicationContext, ERROR_MESSAGE, Toast.LENGTH_SHORT).show()
                     startActivity(Intent(applicationContext, ConsultaRestActivity::class.java))
                     finish()
 

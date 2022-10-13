@@ -1,6 +1,7 @@
 package mx.edu.utez.ejercicios.rest.services
 
 import mx.edu.utez.ejercicios.rest.Usuario
+import mx.edu.utez.ejercicios.utils.EnvValues
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -24,4 +25,10 @@ interface ApiService {
         @Body user: Usuario,
         @Header("Authorization") token : String
     ) : Response<Usuario>
+}
+
+object ApiUtils {
+    var url = "${EnvValues.BASE_URL}/"
+    val apiService : ApiService get() = RetrofitClient
+        .getClient(url)?.create(ApiService::class.java)!!
 }
