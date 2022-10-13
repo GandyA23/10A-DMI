@@ -1,0 +1,8 @@
+package mx.edu.utez.ejercicios.utils
+
+class EnvValues {
+    companion object {
+        const val BASE_URL = "https://gorest.co.in/public/v2"
+        const val BEARER_TOKEN = ""
+    }
+}

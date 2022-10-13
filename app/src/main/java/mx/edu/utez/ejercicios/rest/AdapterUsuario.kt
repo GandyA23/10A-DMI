@@ -9,10 +9,15 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import mx.edu.utez.ejercicios.R
 import mx.edu.utez.ejercicios.databinding.ItemRestBinding
+import mx.edu.utez.ejercicios.listas.AdapterAlumno
 
-class AdapterUsuario(var context : Context) : ListAdapter<Usuario, AdapterUsuario.ViewHolder>(DiffUtilCallback) {
+class AdapterUsuario(private val eventos: Eventos, var context : Context) : ListAdapter<Usuario, AdapterUsuario.ViewHolder>(DiffUtilCallback) {
 
     private val ctx = context
+
+    interface Eventos {
+        fun onItemClick(element: Usuario, position: Int)
+    }
 
     inner class ViewHolder (private val binding : ItemRestBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind (element: Usuario, position: Int) {
@@ -20,7 +25,19 @@ class AdapterUsuario(var context : Context) : ListAdapter<Usuario, AdapterUsuari
             binding.textViewNombre.text = element.name
             binding.textViewCorreo.text = element.email
             binding.textViewGenero.text = element.gender
-            binding.viewIndicador.setBackgroundColor(ContextCompat.getColor(ctx, if (element.status.equals("active")) R.color.verde else R.color.rojo))
+            binding.viewIndicador.setBackgroundColor(
+                ContextCompat.getColor(
+                    ctx,
+                    if (element.status.equals("active"))
+                        R.color.verde
+                    else
+                        R.color.rojo
+                )
+            )
+
+            binding.linearLayoutItem1.setOnClickListener {
+                this@AdapterUsuario.eventos.onItemClick(element, position)
+            }
         }
     }
 
