@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
     // id 'kotlin-android-extensions'
 }
 
@@ -84,4 +85,9 @@ dependencies {
 
     // Interceptor para ver lo que se envía y recibe la aplicación
     implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+
+    // firebase
+    implementation platform('com.google.firebase:firebase-bom:31.0.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-firestore-ktx'
 }
