@@ -7,21 +7,21 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import mx.edu.utez.ejercicios.databinding.ItemDatastoreBinding
-import mx.edu.utez.ejercicios.datastore.model.UsuarioFullDatastore
+import mx.edu.utez.ejercicios.datastore.model.UsuarioDatastore
 
-class UsuarioDatastoreAdapter(private val eventos: Eventos, var context : Context) : ListAdapter<UsuarioFullDatastore, UsuarioDatastoreAdapter.ViewHolder>(
+class UsuarioDatastoreAdapter(private val eventos: Eventos, var context : Context) : ListAdapter<UsuarioDatastore, UsuarioDatastoreAdapter.ViewHolder>(
     DiffUtilCallback
 ) {
 
     private val ctx = context
 
     interface Eventos {
-        fun onItemClick(element: UsuarioFullDatastore, position: Int)
-        fun onDelete(element: UsuarioFullDatastore)
+        fun onItemClick(element: UsuarioDatastore, position: Int)
+        fun onDelete(element: UsuarioDatastore)
     }
 
     inner class ViewHolder (private val binding : ItemDatastoreBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind (element: UsuarioFullDatastore, position: Int) {
+        fun bind (element: UsuarioDatastore, position: Int) {
             binding.textViewNombre.text = element.nombre
             binding.textViewPaterno.text = element.paterno
             binding.textViewMaterno.text = element.materno
@@ -46,12 +46,12 @@ class UsuarioDatastoreAdapter(private val eventos: Eventos, var context : Contex
         holder.bind(getItem(position), position)
     }
 
-    private object DiffUtilCallback : DiffUtil.ItemCallback<UsuarioFullDatastore>() {
-        override fun areItemsTheSame(oldItem: UsuarioFullDatastore, newItem: UsuarioFullDatastore): Boolean {
+    private object DiffUtilCallback : DiffUtil.ItemCallback<UsuarioDatastore>() {
+        override fun areItemsTheSame(oldItem: UsuarioDatastore, newItem: UsuarioDatastore): Boolean {
             return true
         }
 
-        override fun areContentsTheSame(oldItem: UsuarioFullDatastore, newItem: UsuarioFullDatastore): Boolean {
+        override fun areContentsTheSame(oldItem: UsuarioDatastore, newItem: UsuarioDatastore): Boolean {
             return true
         }
     }

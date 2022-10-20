@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
 import mx.edu.utez.ejercicios.databinding.ActivityConsultaDatastoreBinding
 import mx.edu.utez.ejercicios.datastore.adapter.UsuarioDatastoreAdapter
-import mx.edu.utez.ejercicios.datastore.model.UsuarioFullDatastore
+import mx.edu.utez.ejercicios.datastore.model.UsuarioDatastore
 import mx.edu.utez.ejercicios.utils.LoadingScreen
 
 class ConsultaDatastoreActivity : AppCompatActivity(), UsuarioDatastoreAdapter.Eventos {
@@ -29,7 +29,7 @@ class ConsultaDatastoreActivity : AppCompatActivity(), UsuarioDatastoreAdapter.E
         db.collection("usuarios").get()
             .addOnSuccessListener {
                 var response = it.map { elemento ->
-                    UsuarioFullDatastore(
+                    UsuarioDatastore(
                         elemento.reference.id,
                         elemento["nombre"].toString(),
                         elemento["paterno"].toString(),
@@ -48,7 +48,7 @@ class ConsultaDatastoreActivity : AppCompatActivity(), UsuarioDatastoreAdapter.E
             }
     }
 
-    fun setData (response: List<UsuarioFullDatastore>) {
+    fun setData (response: List<UsuarioDatastore>) {
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = UsuarioDatastoreAdapter(this, this)
         binding.recyclerView.adapter = adapter
@@ -56,13 +56,13 @@ class ConsultaDatastoreActivity : AppCompatActivity(), UsuarioDatastoreAdapter.E
         adapter.notifyDataSetChanged()
     }
 
-    override fun onItemClick(element: UsuarioFullDatastore, position: Int) {
+    override fun onItemClick(element: UsuarioDatastore, position: Int) {
     }
 
-    override fun onDelete(element: UsuarioFullDatastore) {
+    override fun onDelete(element: UsuarioDatastore) {
         LoadingScreen.show(this@ConsultaDatastoreActivity, "Eliminando usuario...", false)
 
-        db.collection("usuarios").document(element.id).delete()
+        db.collection("usuarios").document(element.id!!).delete()
             .addOnSuccessListener {
                 Toast.makeText(
                     this@ConsultaDatastoreActivity,

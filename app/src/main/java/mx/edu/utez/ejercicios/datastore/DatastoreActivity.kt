@@ -1,5 +1,6 @@
 package mx.edu.utez.ejercicios.datastore
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -25,7 +26,7 @@ class DatastoreActivity : AppCompatActivity() {
         binding.buttonRegistrar.setOnClickListener {
             // Agrega al usuario a la DB de Firebase
             db.collection("usuarios").add(
-                UsuarioDatastore(
+                UsuarioDatastore.newElement(
                     binding.editTextNombre.text.toString(),
                     binding.editTextPaterno.text.toString(),
                     binding.editTextMaterno.text.toString(),
@@ -35,6 +36,8 @@ class DatastoreActivity : AppCompatActivity() {
             ).addOnSuccessListener {
                 // Muestra el id
                 Toast.makeText(applicationContext, "id ${it.id}", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, ConsultaDatastoreActivity::class.java))
+                finish()
             }.addOnFailureListener {
                 // Muestra un mensaje de error
                 println("error -> ${it.message}")
