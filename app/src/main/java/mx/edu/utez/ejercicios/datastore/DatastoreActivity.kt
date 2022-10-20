@@ -7,7 +7,7 @@ import android.widget.RadioButton
 import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
 import mx.edu.utez.ejercicios.databinding.ActivityDatastoreBinding
-import java.lang.Integer.parseInt
+import mx.edu.utez.ejercicios.datastore.model.UsuarioDatastore
 
 class DatastoreActivity : AppCompatActivity() {
 
@@ -25,12 +25,12 @@ class DatastoreActivity : AppCompatActivity() {
         binding.buttonRegistrar.setOnClickListener {
             // Agrega al usuario a la DB de Firebase
             db.collection("usuarios").add(
-                hashMapOf(
-                    "nombre" to binding.editTextNombre.text,
-                    "paterno" to binding.editTextPaterno.text,
-                    "materno" to binding.editTextMaterno.text,
-                    "edad" to parseInt(binding.editTextEdad.text.toString()),
-                    "sexo" to "Hombre"
+                UsuarioDatastore(
+                    binding.editTextNombre.text.toString(),
+                    binding.editTextPaterno.text.toString(),
+                    binding.editTextMaterno.text.toString(),
+                    binding.editTextEdad.text.toString().toInt(),
+                    genre
                 )
             ).addOnSuccessListener {
                 // Muestra el id

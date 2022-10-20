@@ -11,7 +11,7 @@ import java.lang.Exception
 
 object LoadingScreen {
 
-    lateinit var dialog: Dialog
+    var dialog: Dialog? = null
 
     /**
      * Crea y muestra el Dialog mientras
@@ -20,18 +20,20 @@ object LoadingScreen {
     fun show(context: Context?, message: String?, cancelable: Boolean) {
         // Asigna estilos y template al dialog
         dialog = Dialog(context!!)
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.setContentView(R.layout.dialog)
-        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.setCancelable(cancelable)
+        dialog!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog!!.setContentView(R.layout.dialog)
+        dialog!!.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog!!.setCancelable(cancelable)
 
         // Asigna el mensaje de espera
-        var label = dialog.findViewById<TextView>(R.id.textViewLabel)
+        var label = dialog!!.findViewById<TextView>(R.id.textViewLabel)
         label.text = message
+
+        label.width = 400
 
         // Muestra el dialog
         try {
-            dialog.show()
+            dialog!!.show()
         } catch (e : Exception) {
             println(e)
         }
@@ -43,7 +45,7 @@ object LoadingScreen {
     fun hide() {
         if (dialog != null)
             try {
-                dialog.dismiss()
+                dialog!!.dismiss()
             } catch (e : Exception) {
                 println(e)
             }

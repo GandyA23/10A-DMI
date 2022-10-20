@@ -7,7 +7,7 @@ import android.widget.Button
 import mx.edu.utez.ejercicios.calculadoramvvm.view.MenuFigurasActivity
 import mx.edu.utez.ejercicios.calculatormvp.CalculatorActivity
 import mx.edu.utez.ejercicios.databinding.ActivityMenuBinding
-import mx.edu.utez.ejercicios.datastore.DatastoreActivity
+import mx.edu.utez.ejercicios.datastore.MenuDatastoreActivity
 import mx.edu.utez.ejercicios.db.RegistroActivity
 import mx.edu.utez.ejercicios.examenunidad1.MainExamenU1Activity
 import mx.edu.utez.ejercicios.listas.ListaActivity
@@ -40,7 +40,7 @@ class MenuActivity : AppCompatActivity() {
             Pair(binding.buttonMvvm, MainMvvmActivity::class),
             Pair(binding.buttonFigurasMvvm, MenuFigurasActivity::class),
             Pair(binding.buttonRest, MainRestActivity::class),
-            Pair(binding.buttonDatastore, DatastoreActivity::class),
+            Pair(binding.buttonDatastore, MenuDatastoreActivity::class),
         )
 
         buttons.forEach { (button, activity) ->

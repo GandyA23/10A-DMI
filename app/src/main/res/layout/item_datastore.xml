@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_margin="5dp"
+    >
+
+    <LinearLayout
+        android:id="@+id/linearLayoutItem1"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/viewIndicador"
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:background="@color/teal_200"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center"
+            >
+
+            <TextView
+                android:id="@+id/textViewNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Gandy Esaú"
+                android:textStyle="normal"
+                android:textSize="10sp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="3dp"
+                />
+
+            <TextView
+                android:id="@+id/textViewPaterno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Ávila"
+                android:textStyle="normal"
+                android:textSize="10sp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="3dp"
+                />
+
+
+            <TextView
+                android:id="@+id/textViewMaterno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Estrada"
+                android:textStyle="normal"
+                android:textSize="10sp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="3dp"
+                />
+
+            <TextView
+                android:id="@+id/textViewGenero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Hombre"
+                android:textStyle="normal"
+                android:textSize="10sp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="3dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            >
+
+            <ImageView
+                android:id="@+id/imageViewRemove"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@mipmap/ic_remove"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
