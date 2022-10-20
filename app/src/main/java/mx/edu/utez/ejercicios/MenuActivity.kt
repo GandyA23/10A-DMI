@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import mx.edu.utez.ejercicios.auth.AuthActivity
 import mx.edu.utez.ejercicios.calculadoramvvm.view.MenuFigurasActivity
 import mx.edu.utez.ejercicios.calculatormvp.CalculatorActivity
 import mx.edu.utez.ejercicios.databinding.ActivityMenuBinding
@@ -41,6 +42,7 @@ class MenuActivity : AppCompatActivity() {
             Pair(binding.buttonFigurasMvvm, MenuFigurasActivity::class),
             Pair(binding.buttonRest, MainRestActivity::class),
             Pair(binding.buttonDatastore, MenuDatastoreActivity::class),
+            Pair(binding.buttonAuthFirebase, AuthActivity::class),
         )
 
         buttons.forEach { (button, activity) ->

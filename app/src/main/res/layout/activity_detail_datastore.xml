@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".datastore.DetailDatastoreActivity"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    android:gravity="center">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Actualizar un usuario"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        android:gravity="center"
+        android:layout_marginVertical="15sp"
+        />
+
+    <EditText
+        android:id="@+id/editTextNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Nombre"
+        android:layout_marginVertical="15sp"
+        />
+
+    <EditText
+        android:id="@+id/editTextPaterno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Paterno"
+        android:layout_marginVertical="15sp"
+        />
+
+    <EditText
+        android:id="@+id/editTextMaterno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Materno"
+        android:layout_marginVertical="15sp"
+        />
+
+
+    <EditText
+        android:id="@+id/editTextEdad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Edad"
+        android:inputType="numberSigned"
+        android:layout_marginVertical="15sp"
+        />
+
+    <RadioGroup
+        android:id="@+id/radioGroupSexo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginVertical="10sp"
+        >
+
+        <RadioButton
+            android:id="@+id/radioButtonHombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hombre"
+            android:onClick="onRadioButtonClicked"
+            />
+
+        <RadioButton
+            android:id="@+id/radioButtonMujer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mujer"
+            android:onClick="onRadioButtonClicked"
+            />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/buttonActualizar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="15sp"
+        android:text="Actualizar"
+        />
+
+</LinearLayout>

@@ -1,5 +1,6 @@
 package mx.edu.utez.ejercicios.datastore
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -57,6 +58,7 @@ class ConsultaDatastoreActivity : AppCompatActivity(), UsuarioDatastoreAdapter.E
     }
 
     override fun onItemClick(element: UsuarioDatastore, position: Int) {
+        startActivity(Intent(this@ConsultaDatastoreActivity, DetailDatastoreActivity::class.java).putExtra("id", element.id))
     }
 
     override fun onDelete(element: UsuarioDatastore) {
@@ -76,5 +78,10 @@ class ConsultaDatastoreActivity : AppCompatActivity(), UsuarioDatastoreAdapter.E
                 println("error -> ${it.message}")
                 LoadingScreen.hide()
             }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getAll()
     }
 }

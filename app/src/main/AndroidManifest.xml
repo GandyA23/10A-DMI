@@ -17,6 +17,12 @@
         android:theme="@style/Theme.Ejercicios"
         tools:targetApi="31">
         <activity
+            android:name=".auth.AuthActivity"
+            android:exported="false" />
+        <activity
+            android:name=".datastore.DetailDatastoreActivity"
+            android:exported="false" />
+        <activity
             android:name=".datastore.MenuDatastoreActivity"
             android:exported="false" />
         <activity
