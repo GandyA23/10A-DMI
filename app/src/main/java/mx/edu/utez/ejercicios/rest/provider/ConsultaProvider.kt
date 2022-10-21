@@ -13,7 +13,7 @@ class ConsultaProvider {
         suspend fun getAll(): Result<List<Usuario>> {
             val call = ApiUtils
                 .apiService
-                .getAll("${EnvValues.BASE_URL}/users/", "Bearer ${EnvValues.BEARER_TOKEN}")
+                .getAll("${EnvValues.BASE_URL_GO_REST}/users/", "Bearer ${EnvValues.BEARER_TOKEN}")
 
             if (call.isSuccessful)
                 return Result.success(call.body()!!)
@@ -23,7 +23,7 @@ class ConsultaProvider {
         suspend fun show(id: Long): Result<Usuario> {
             val call = ApiUtils
                 .apiService
-                .show("${EnvValues.BASE_URL}/users/${id}", "Bearer ${EnvValues.BEARER_TOKEN}")
+                .show("${EnvValues.BASE_URL_GO_REST}/users/${id}", "Bearer ${EnvValues.BEARER_TOKEN}")
 
             if (call.isSuccessful)
                 return Result.success(call.body()!!)

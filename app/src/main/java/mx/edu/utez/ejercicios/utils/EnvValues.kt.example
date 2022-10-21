@@ -1,8 +1,13 @@
 package mx.edu.utez.ejercicios.utils
 
+/**
+* Copia y pega el contenido de este archivo en uno nuevo llamado EnvValues.kt
+* y coloca tus accesos
+*/
 class EnvValues {
     companion object {
-        const val BASE_URL = "https://gorest.co.in/public/v2"
+        const val BASE_URL_GO_REST = "https://gorest.co.in/public/v2"
         const val BEARER_TOKEN = ""
+        const val SERVER_ID_GOOGLE = ""
     }
 }

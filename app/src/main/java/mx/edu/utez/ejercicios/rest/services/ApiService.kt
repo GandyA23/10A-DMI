@@ -34,7 +34,7 @@ interface ApiService {
 }
 
 object ApiUtils {
-    var url = "${EnvValues.BASE_URL}/"
+    var url = "${EnvValues.BASE_URL_GO_REST}/"
     val apiService : ApiService get() = RetrofitClient
         .getClient(url)?.create(ApiService::class.java)!!
 }

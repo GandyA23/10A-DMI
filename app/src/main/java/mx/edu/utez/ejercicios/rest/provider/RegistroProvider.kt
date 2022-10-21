@@ -12,7 +12,7 @@ class RegistroProvider {
     companion object {
         suspend fun registro(usuario: Usuario) : Result<Usuario> {
             var call = ApiUtils.apiService.create(
-                "${EnvValues.BASE_URL}/users/",
+                "${EnvValues.BASE_URL_GO_REST}/users/",
                 usuario,
                 "Bearer ${EnvValues.BEARER_TOKEN}"
             )

@@ -9,7 +9,7 @@ class EliminarProvider {
         suspend fun delete(id: Long): Result<String> {
             val call = ApiUtils
                 .apiService
-                .delete("${EnvValues.BASE_URL}/users/${id}/", "Bearer ${EnvValues.BEARER_TOKEN}")
+                .delete("${EnvValues.BASE_URL_GO_REST}/users/${id}/", "Bearer ${EnvValues.BEARER_TOKEN}")
 
             if (call.isSuccessful)
                 return Result.success("Se ha eliminado correctamente")

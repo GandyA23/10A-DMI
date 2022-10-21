@@ -93,4 +93,7 @@ dependencies {
 
     // Authentication Firebase
     implementation 'com.google.firebase:firebase-auth:19.3.0'
+
+    // Authentication with Google
+    implementation 'com.google.android.gms:play-services-auth:20.3.0'
 }
