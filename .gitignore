@@ -36,3 +36,6 @@ google-services.json
 # Intern class configuration
 EnvValues.kt
 
+# Google Maps API KEY
+google_maps_api.xml
+

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".romano.RomanoActivity"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Conversión de números Romanos"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:layout_marginVertical="30dp"
+        />
+
+    <EditText
+        android:id="@+id/editTextNumero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Número"
+        android:inputType="numberSigned"
+        android:layout_marginVertical="10dp"
+        />
+
+    <Button
+        android:id="@+id/buttonResultado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mostrar resultado"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:layout_marginVertical="10dp"
+        />
+
+    <TextView
+        android:id="@+id/textViewResultado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Resultado:"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        tools:text="LI"
+        android:layout_marginVertical="20dp"
+        />
+
+</LinearLayout>

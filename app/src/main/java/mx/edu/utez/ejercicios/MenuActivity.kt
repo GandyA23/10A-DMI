@@ -12,9 +12,11 @@ import mx.edu.utez.ejercicios.datastore.MenuDatastoreActivity
 import mx.edu.utez.ejercicios.db.RegistroActivity
 import mx.edu.utez.ejercicios.examenunidad1.MainExamenU1Activity
 import mx.edu.utez.ejercicios.listas.ListaActivity
+import mx.edu.utez.ejercicios.mapas.MapsActivity
 import mx.edu.utez.ejercicios.mvvm.view.MainMvvmActivity
 import mx.edu.utez.ejercicios.mvp.MainMvpActivity
 import mx.edu.utez.ejercicios.rest.activity.MainRestActivity
+import mx.edu.utez.ejercicios.romano.RomanoActivity
 import mx.edu.utez.ejercicios.shared.LoginActivity
 import mx.edu.utez.ejercicios.splash.SplashActivity
 import mx.edu.utez.ejercicios.vistas.MainActivity
@@ -43,6 +45,8 @@ class MenuActivity : AppCompatActivity() {
             Pair(binding.buttonRest, MainRestActivity::class),
             Pair(binding.buttonDatastore, MenuDatastoreActivity::class),
             Pair(binding.buttonAuthFirebase, AuthActivity::class),
+            Pair(binding.buttonGoogleMaps, MapsActivity::class),
+            Pair(binding.buttonRomano, RomanoActivity::class),
         )
 
         buttons.forEach { (button, activity) ->
