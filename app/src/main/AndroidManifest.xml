@@ -5,6 +5,10 @@
     <!-- Le damos permiso de que pueda usar internet -->
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- Permisos necesarios para MAPS -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:name=".EjerciciosApplication"
         android:allowBackup="true"
