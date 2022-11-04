@@ -101,4 +101,7 @@ dependencies {
 
     // Authentication with Google
     implementation 'com.google.android.gms:play-services-auth:20.3.0'
+
+    // Location services from Google
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
 }

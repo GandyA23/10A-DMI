@@ -3,9 +3,11 @@ package mx.edu.utez.ejercicios.mapas
 import android.Manifest
 import android.content.pm.PackageManager
 import android.location.Geocoder
+import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -33,7 +35,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
+
         mapFragment.getMapAsync(this)
+
+        binding.buttonIr.setOnClickListener {
+            getCoordinates(binding.editTextDirection.text.toString())
+            getDistanceBetweenTwoPoints()
+        }
     }
 
     /**
@@ -76,6 +84,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         mMap.isMyLocationEnabled = true
         getMarkerLocation()
+        initService()
     }
 
     /**
@@ -92,7 +101,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     /**
-     * Obtiene un string de dirección dado una latitude y longitude*/
+     * Obtiene un string de dirección dado una latitude y longitud
+     * */
     fun getDirection(lat: Double, lon: Double) {
         try {
             var geocoder = Geocoder(this, Locale.getDefault())
@@ -131,5 +141,58 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         } catch (e: Exception) {
             Log.e("MapsLog", e.message!!)
         }
+    }
+
+    /**
+     * Obtiene las coordenadas dada una dirección en string
+     * */
+    fun getCoordinates (direction: String) {
+        // Limpia los demás puntos
+        mMap.clear()
+
+        try {
+            var geocoder = Geocoder(this, Locale.getDefault())
+
+            // Obtiene 1 dirección en base a un string
+            var directions = geocoder.getFromLocationName(direction, 1)
+
+            if (!directions.isNullOrEmpty()){
+                var directionStr = directions[0]
+                var latLng = LatLng(directionStr.latitude, directionStr.longitude)
+
+                // Añade el marcador
+                mMap.addMarker(MarkerOptions().position(latLng).title("Dirección personalizada"))
+
+                // Mueve la camara
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng))
+
+                // Realiza el zoom a la camara
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13f))
+            }
+        } catch (e: Exception) {
+            Log.e("MapsLog", e.message!!)
+        }
+    }
+
+    fun initService() {
+        LocationLiveData(this).observe(this) {
+            Log.d("MapsLog", "Localización real: ${it.latitude}, ${it.longitude}")
+        }
+    }
+
+    fun getDistanceBetweenTwoPoints() {
+        val loc1 = Location("")
+        val loc2 = Location("")
+
+        loc1.latitude = 18.850924
+        loc1.longitude = -99.201572
+
+        loc2.latitude = 18.849138
+        loc2.longitude = -99.200189
+
+        // Obtiene la distancia en metros
+        var distance = loc1.distanceTo(loc2)
+
+        Toast.makeText(applicationContext, "Distancia (mts): $distance", Toast.LENGTH_SHORT).show()
     }
 }
