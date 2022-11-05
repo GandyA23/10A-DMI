@@ -1,6 +1,7 @@
 package mx.edu.utez.ejercicios.auth
 
 import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -11,6 +12,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import mx.edu.utez.ejercicios.EjerciciosApplication
 import mx.edu.utez.ejercicios.databinding.ActivityAuthBinding
 import mx.edu.utez.ejercicios.utils.EnvValues
 import mx.edu.utez.ejercicios.utils.LoadingScreen
@@ -64,6 +66,12 @@ class AuthActivity : AppCompatActivity() {
             ).addOnCompleteListener {
                 if (it.isSuccessful) {
                     Toast.makeText(this@AuthActivity, "Login correcto: ${it.result.user}", Toast.LENGTH_SHORT).show()
+                    EjerciciosApplication.sharedDatastore.save(
+                        binding.editTextUser.text.toString(),
+                        "FIREBASE"
+                    )
+                    startActivity(Intent(this, ProfileActivity::class.java))
+                    finish()
                 } else {
                     Toast.makeText(this@AuthActivity, "Error al loguearse: ${it.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
@@ -115,6 +123,22 @@ class AuthActivity : AppCompatActivity() {
 
             getResult.launch(intent)
         }
+
+        checkLogin()
+    }
+
+    /**
+     * Verifica si existe un usuario logueado
+     * */
+    private fun checkLogin() {
+        // Verifica si el usuario se encuentra en el shared preference
+        val userShared = EjerciciosApplication.sharedDatastore.get()
+
+        if (!userShared["email"].isNullOrEmpty() && !userShared["provider"].isNullOrEmpty()) {
+            // En caso de que se encuentre logueado, entonces redirigelo a la vista de profile
+            startActivity(Intent(this, ProfileActivity::class.java))
+            finish()
+        }
     }
 
     private val getResult = registerForActivityResult(
@@ -132,7 +156,15 @@ class AuthActivity : AppCompatActivity() {
                 credentials
             ).addOnCompleteListener {
                 if (it.isSuccessful) {
+                    // Guarda el usuario en el shared preferences
                     Toast.makeText(this@AuthActivity, "Login correcto: ${it.result.user}", Toast.LENGTH_SHORT).show()
+
+                    EjerciciosApplication.sharedDatastore.save(
+                        binding.editTextUser.text.toString(),
+                        "FIREBASE"
+                    )
+                    startActivity(Intent(this, ProfileActivity::class.java))
+                    finish()
                 } else {
                     Toast.makeText(this@AuthActivity, "Error al loguearse: ${it.exception?.message}", Toast.LENGTH_SHORT).show()
                 }

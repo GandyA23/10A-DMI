@@ -3,9 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="mx.edu.utez.ejercicios">
     <!-- Le damos permiso de que pueda usar internet -->
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <!-- Permisos necesarios para MAPS -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Permisos necesarios para MAPS -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
@@ -20,6 +18,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ejercicios"
         tools:targetApi="31">
+        <activity
+            android:name=".auth.ProfileActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".romano.RomanoActivity"
             android:exported="false" />

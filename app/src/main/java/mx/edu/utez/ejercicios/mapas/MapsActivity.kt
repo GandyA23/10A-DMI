@@ -1,21 +1,23 @@
 package mx.edu.utez.ejercicios.mapas
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.location.Location
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import mx.edu.utez.ejercicios.R
 import mx.edu.utez.ejercicios.databinding.ActivityMapsBinding
 import java.lang.Exception
@@ -41,6 +43,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         binding.buttonIr.setOnClickListener {
             getCoordinates(binding.editTextDirection.text.toString())
             getDistanceBetweenTwoPoints()
+        }
+
+        binding.buttonCalculateRoute.setOnClickListener {
+            openNavigation(LatLng(18.851643, -99.199913), LatLng(18.848178, -99.199407))
         }
     }
 
@@ -85,6 +91,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.isMyLocationEnabled = true
         getMarkerLocation()
         initService()
+        buildRoute()
     }
 
     /**
@@ -194,5 +201,49 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         var distance = loc1.distanceTo(loc2)
 
         Toast.makeText(applicationContext, "Distancia (mts): $distance", Toast.LENGTH_SHORT).show()
+    }
+
+    /**
+     * Abre un nuevo activity con la ruta en maps
+     * */
+    fun openNavigation(origen: LatLng, destino: LatLng) {
+        // "https://maps.google.com/maps?saddr=location1&daddr=location2"
+
+        // Abre una vista que muestre el mapa
+        var intent = Intent(
+            Intent.ACTION_VIEW,
+            Uri.parse("https://maps.google.com/maps?saddr=${origen.latitude},${origen.longitude}&daddr=${destino.latitude},${destino.longitude}")
+        )
+
+        startActivity(intent)
+    }
+
+    /**
+     * Muestra una ruta con puntos trazados en un mapa
+     * */
+    fun buildRoute() {
+        // Construye el recorrido
+        var polylineOptions = PolylineOptions()
+            // Dirección desde una docencia hasta el CECyTE
+            .add(LatLng(18.851234, -99.200416))
+            .add(LatLng(18.851191, -99.200166))
+            .add(LatLng(18.851049, -99.199987))
+            .add(LatLng(18.851023, -99.199834))
+            .add(LatLng(18.850409, -99.199877))
+            .add(LatLng(18.850224, -99.199764))
+            .add(LatLng(18.849947, -99.199794))
+            .add(LatLng(18.849299, -99.200255))
+            .add(LatLng(18.848489, -99.199637))
+            .width(10f)
+            .color(ContextCompat.getColor(this, R.color.teal_700))
+
+        var polyline = mMap.addPolyline(polylineOptions)
+        // Dale un estilo a la linea
+        var patron = listOf(
+            Dot(), Gap(10f), Dash(30f), Gap(10f)
+        )
+
+        polyline.pattern = patron
+
     }
 }

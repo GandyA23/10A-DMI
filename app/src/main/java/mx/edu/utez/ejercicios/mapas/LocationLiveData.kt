@@ -50,7 +50,6 @@ class LocationLiveData(context: Context) : LiveData<LocationModel>() {
 
     @SuppressLint("NewApi")
     private fun setLocationData(location: Location) {
-        location.speedAccuracyMetersPerSecond
         value = LocationModel(
             longitude = location.longitude,
             latitude = location.latitude
