@@ -68,7 +68,7 @@ class AuthActivity : AppCompatActivity() {
                     Toast.makeText(this@AuthActivity, "Login correcto: ${it.result.user}", Toast.LENGTH_SHORT).show()
                     EjerciciosApplication.sharedDatastore.save(
                         binding.editTextUser.text.toString(),
-                        "FIREBASE"
+                        "EMAIL AND PASSWORD"
                     )
                     startActivity(Intent(this, ProfileActivity::class.java))
                     finish()
@@ -157,12 +157,13 @@ class AuthActivity : AppCompatActivity() {
             ).addOnCompleteListener {
                 if (it.isSuccessful) {
                     // Guarda el usuario en el shared preferences
-                    Toast.makeText(this@AuthActivity, "Login correcto: ${it.result.user}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@AuthActivity, "Login correcto: ${it.result.user!!.email!!}", Toast.LENGTH_SHORT).show()
 
                     EjerciciosApplication.sharedDatastore.save(
-                        binding.editTextUser.text.toString(),
-                        "FIREBASE"
+                        it.result.user!!.email!!,
+                        "GOOGLE"
                     )
+
                     startActivity(Intent(this, ProfileActivity::class.java))
                     finish()
                 } else {
