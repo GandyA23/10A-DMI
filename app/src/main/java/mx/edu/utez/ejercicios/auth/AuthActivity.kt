@@ -144,10 +144,10 @@ class AuthActivity : AppCompatActivity() {
     private val getResult = registerForActivityResult(
         ActivityResultContracts
             .StartActivityForResult()
-    ) {
+    ) { itResult ->
         // Verifica si la sesión de google fue correcta
-        if (it.resultCode == Activity.RESULT_OK) {
-            var task = GoogleSignIn.getSignedInAccountFromIntent(it.data)
+        if (itResult.resultCode == Activity.RESULT_OK) {
+            var task = GoogleSignIn.getSignedInAccountFromIntent(itResult.data)
             var account = task.getResult(ApiException::class.java)
             var credentials = GoogleAuthProvider.getCredential(account.idToken, null)
 

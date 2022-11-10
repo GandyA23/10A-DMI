@@ -3,7 +3,9 @@ package mx.edu.utez.ejercicios
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
+import com.google.firebase.messaging.FirebaseMessaging
 import mx.edu.utez.ejercicios.auth.AuthActivity
 import mx.edu.utez.ejercicios.calculadoramvvm.view.MenuFigurasActivity
 import mx.edu.utez.ejercicios.calculatormvp.CalculatorActivity
@@ -54,5 +56,22 @@ class MenuActivity : AppCompatActivity() {
                 startActivity(Intent(this, activity.java))
             }
         }
+
+        getFirebaseToken()
     }
+
+    /**
+     * En la primera vista siempre es necesario crear un token
+     * */
+    fun getFirebaseToken () {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener {
+            if (it.isSuccessful) {
+                var token = it.result
+                Log.d("Notification-Menu -> ", token)
+            } else {
+                Log.d("Notification-Error -> ", it.exception!!.message!!)
+            }
+        }
+    }
+
 }
