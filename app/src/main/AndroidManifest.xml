@@ -18,7 +18,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ejercicios"
         tools:targetApi="31">
-
+        <activity
+            android:name=".realtime.RealtimeActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <!-- Servicio de notificaciones de Firebase -->
         <service
             android:name=".notificacion.MyFirebaseMessagingService"

@@ -108,4 +108,7 @@ dependencies {
     // Firebase notifications
     implementation 'com.google.firebase:firebase-messaging:23.1.0'
     implementation 'com.google.firebase:firebase-messaging-ktx:23.0.1'
+
+    // Firebase realtime
+    implementation 'com.google.firebase:firebase-database'
 }

@@ -17,6 +17,7 @@ import mx.edu.utez.ejercicios.listas.ListaActivity
 import mx.edu.utez.ejercicios.mapas.MapsActivity
 import mx.edu.utez.ejercicios.mvvm.view.MainMvvmActivity
 import mx.edu.utez.ejercicios.mvp.MainMvpActivity
+import mx.edu.utez.ejercicios.realtime.RealtimeActivity
 import mx.edu.utez.ejercicios.rest.activity.MainRestActivity
 import mx.edu.utez.ejercicios.romano.RomanoActivity
 import mx.edu.utez.ejercicios.shared.LoginActivity
@@ -49,6 +50,8 @@ class MenuActivity : AppCompatActivity() {
             Pair(binding.buttonAuthFirebase, AuthActivity::class),
             Pair(binding.buttonGoogleMaps, MapsActivity::class),
             Pair(binding.buttonRomano, RomanoActivity::class),
+            Pair(binding.buttonRomano, RomanoActivity::class),
+            Pair(binding.buttonRealtime, RealtimeActivity::class),
         )
 
         buttons.forEach { (button, activity) ->
