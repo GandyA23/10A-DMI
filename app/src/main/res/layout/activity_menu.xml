@@ -141,6 +141,14 @@
             android:layout_marginVertical="5sp"
             />
 
+        <Button
+            android:id="@+id/buttonPermissions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Permisos"
+            android:layout_marginVertical="5sp"
+            />
+
     </LinearLayout>
 
 </ScrollView>

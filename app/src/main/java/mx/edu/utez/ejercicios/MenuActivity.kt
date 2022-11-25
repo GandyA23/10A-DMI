@@ -17,6 +17,7 @@ import mx.edu.utez.ejercicios.listas.ListaActivity
 import mx.edu.utez.ejercicios.mapas.MapsActivity
 import mx.edu.utez.ejercicios.mvvm.view.MainMvvmActivity
 import mx.edu.utez.ejercicios.mvp.MainMvpActivity
+import mx.edu.utez.ejercicios.permissions.PermissionsActivity
 import mx.edu.utez.ejercicios.realtime.RealtimeActivity
 import mx.edu.utez.ejercicios.rest.activity.MainRestActivity
 import mx.edu.utez.ejercicios.romano.RomanoActivity
@@ -52,6 +53,7 @@ class MenuActivity : AppCompatActivity() {
             Pair(binding.buttonRomano, RomanoActivity::class),
             Pair(binding.buttonRomano, RomanoActivity::class),
             Pair(binding.buttonRealtime, RealtimeActivity::class),
+            Pair(binding.buttonPermissions, PermissionsActivity::class),
         )
 
         buttons.forEach { (button, activity) ->
